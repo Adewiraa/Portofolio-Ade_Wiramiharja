@@ -709,8 +709,8 @@ export default function Portfolio() {
                 <span>Lebih banyak</span>
               </div>
               
-              <div ref={githubScrollRef} className="overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950 flex lg:justify-center">
-                <div className="flex gap-1.5 w-max select-none">
+              <div ref={githubScrollRef} className="overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950 flex lg:justify-center" style={{ direction: 'rtl' }}>
+                <div className="flex gap-1.5 w-max select-none" style={{ direction: 'ltr' }}>
                   {/* Day labels column on the left */}
                   <div className="flex flex-col gap-1.5 pr-1">
                     {/* Spacer for month/year header */}
