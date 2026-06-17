@@ -422,7 +422,7 @@ export default function Portfolio() {
         <div className="flex items-center gap-3">
           <div className="px-3 py-1.5 bg-zinc-900 border border-zinc-800 rounded-lg flex items-center gap-2">
             <span className={`w-2.5 h-2.5 rounded-full ${theme.accentBg} animate-pulse`} />
-            <span className="font-mono text-sm font-bold tracking-tight">ADE.DEV</span>
+            <span className="font-mono text-sm font-bold tracking-tight">A.DEV</span>
           </div>
         </div>
 
