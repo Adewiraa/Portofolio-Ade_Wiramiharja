@@ -532,7 +532,7 @@ export default function Portfolio() {
                   <Github className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/ade-wiramiharja-2b4b94202/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-zinc-950 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-xl text-zinc-400 hover:text-zinc-200 transition-colors"
@@ -884,7 +884,7 @@ export default function Portfolio() {
                 <span className="text-[10px] font-mono">GitHub</span>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/ade-wiramiharja-2b4b94202/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center justify-center p-2 bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 rounded-xl hover:bg-zinc-800/40 text-zinc-400 hover:text-white transition-all"
@@ -893,7 +893,7 @@ export default function Portfolio() {
                 <span className="text-[10px] font-mono">LinkedIN</span>
               </a>
               <a
-                href="mailto:ade@example.com"
+                href="mailto:ade.wiramiharjaa@gmail.com"
                 className="flex flex-col items-center justify-center p-2 bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 rounded-xl hover:bg-zinc-800/40 text-zinc-400 hover:text-white transition-all"
               >
                 <Mail className="w-5 h-5 mb-1" />
