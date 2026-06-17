@@ -491,7 +491,7 @@ export default function Portfolio() {
                 <div className={`absolute -inset-0.5 rounded-[26px] bg-gradient-to-tr from-sky-500 to-indigo-500 opacity-30 group-hover/avatar:opacity-80 blur-md transition duration-500`} />
                 
                 {/* Main Container */}
-                <div className="relative w-24 h-24 sm:w-28 h-28 rounded-[24px] p-1 bg-zinc-950/80 backdrop-blur-xl border border-zinc-800/80 shadow-2xl flex items-center justify-center overflow-hidden">
+                <div className="relative w-24 h-32 sm:w-28 h-36 rounded-[24px] p-1 bg-zinc-950/80 backdrop-blur-xl border border-zinc-800/80 shadow-2xl flex items-center justify-center overflow-hidden">
                   {/* Inner rounded container for the image */}
                   <div className="relative w-full h-full rounded-[18px] overflow-hidden bg-zinc-900">
                     <Image
@@ -499,7 +499,7 @@ export default function Portfolio() {
                       alt="Ade Wiramiharja Profile Photo"
                       fill
                       unoptimized
-                      className="object-cover object-center scale-105 group-hover/avatar:scale-110 transition-transform duration-500"
+                      className="object-cover object-top scale-100 group-hover/avatar:scale-105 transition-transform duration-500"
                       priority
                     />
                   </div>
