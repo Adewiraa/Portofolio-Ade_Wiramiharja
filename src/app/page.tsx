@@ -760,10 +760,13 @@ export default function Portfolio() {
             </div>
 
             {/* Timeline Vertical */}
-            <div className="flex-1 overflow-y-auto max-h-[350px] pr-3 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950/40 relative border-l-2 border-zinc-800 pl-6 space-y-6 sm:space-y-8 py-2">
+            <div className="flex-1 overflow-y-auto max-h-[350px] pr-3 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950/40 relative pl-8 space-y-6 sm:space-y-8 py-2">
+              {/* Timeline Line */}
+              <div className="absolute left-[15px] top-0 bottom-0 w-0.5 bg-zinc-800" />
+
               {/* Item 1 */}
               <div className="relative">
-                <div className={`absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-zinc-950 border-2 ${theme.border} flex items-center justify-center`}>
+                <div className={`absolute left-2 top-1.5 w-4 h-4 rounded-full bg-zinc-950 border-2 ${theme.border} flex items-center justify-center`}>
                   <span className={`w-1.5 h-1.5 rounded-full ${theme.accentBg}`} />
                 </div>
                 <div className="space-y-1">
@@ -786,7 +789,7 @@ export default function Portfolio() {
 
               {/* Item 2 */}
               <div className="relative">
-                <div className="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center">
+                <div className="absolute left-2 top-1.5 w-4 h-4 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
                 </div>
                 <div className="space-y-1">
@@ -808,7 +811,7 @@ export default function Portfolio() {
 
               {/* Item 3 */}
               <div className="relative">
-                <div className="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center">
+                <div className="absolute left-2 top-1.5 w-4 h-4 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
                 </div>
                 <div className="space-y-1">
