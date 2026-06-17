@@ -695,43 +695,83 @@ export default function Portfolio() {
               </div>
               
               <div className="overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950 flex lg:justify-center">
-                <div className="flex gap-1.5 w-max">
-                  {githubGrid.map((week, wIdx) => (
-                    <div key={wIdx} className="flex flex-col gap-1.5">
-                      {week.map((cell, dIdx) => {
-                        // Color intensity based on GitHub dark mode theme
-                        const colors = [
-                          "bg-[#161b22] border border-[#1b2129]", // level 0
-                          "bg-[#0e4429] border border-[#135835]", // level 1
-                          "bg-[#006d32] border border-[#008f42]", // level 2
-                          "bg-[#26a641] border border-[#2dbf4c]", // level 3
-                          "bg-[#39d353] border border-[#44e660]", // level 4
-                        ];
-                        const level = cell.level !== undefined ? cell.level : Math.min(cell.count, 4);
-                        const colorClass = colors[Math.min(level, 4)];
-                        
-                        const dateFormatted = cell.date.toLocaleDateString("id-ID", {
-                          day: "numeric",
-                          month: "short",
-                          year: "numeric",
-                        });
+                <div className="flex gap-1.5 w-max select-none">
+                  {/* Day labels column on the left */}
+                  <div className="flex flex-col gap-1.5 pr-1">
+                    {/* Spacer for month/year header */}
+                    <div className="h-4" />
+                    <div className="h-3.5" /> {/* Sun spacer */}
+                    <div className="h-3.5 flex items-center text-[9px] font-mono text-zinc-500 font-bold select-none leading-none pr-1">Sen</div>
+                    <div className="h-3.5" /> {/* Tue spacer */}
+                    <div className="h-3.5 flex items-center text-[9px] font-mono text-zinc-500 font-bold select-none leading-none pr-1">Rab</div>
+                    <div className="h-3.5" /> {/* Thu spacer */}
+                    <div className="h-3.5 flex items-center text-[9px] font-mono text-zinc-500 font-bold select-none leading-none pr-1">Jum</div>
+                    <div className="h-3.5" /> {/* Sat spacer */}
+                  </div>
 
-                        return (
-                          <button
-                            key={dIdx}
-                            onMouseEnter={() =>
-                              setGithubTooltip(`${cell.count} kontribusi pada ${dateFormatted}`)
-                            }
-                            onClick={() =>
-                              setGithubTooltip(`${cell.count} kontribusi pada ${dateFormatted}`)
-                            }
-                            className={`w-3.5 h-3.5 rounded transition-transform hover:scale-125 focus:scale-125 ${colorClass}`}
-                            aria-label={`Contributions info`}
-                          />
-                        );
-                      })}
-                    </div>
-                  ))}
+                  {githubGrid.map((week, wIdx) => {
+                    const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agt", "Sep", "Okt", "Nov", "Des"];
+                    const firstDayOfWeek = week[0]?.date;
+                    const prevWeekFirstDay = wIdx > 0 ? githubGrid[wIdx - 1][0]?.date : null;
+                    
+                    const isNewMonth = wIdx === 0 || (firstDayOfWeek && prevWeekFirstDay && firstDayOfWeek.getMonth() !== prevWeekFirstDay.getMonth());
+                    const isNewYear = wIdx === 0 || (firstDayOfWeek && prevWeekFirstDay && firstDayOfWeek.getFullYear() !== prevWeekFirstDay.getFullYear());
+                    
+                    let headerLabel = "";
+                    if (isNewMonth) {
+                      const monthName = firstDayOfWeek ? months[firstDayOfWeek.getMonth()] : "";
+                      const yearSuffix = isNewYear && firstDayOfWeek ? ` '${String(firstDayOfWeek.getFullYear()).slice(-2)}` : "";
+                      headerLabel = `${monthName}${yearSuffix}`;
+                    } else if (isNewYear) {
+                      headerLabel = firstDayOfWeek ? `${firstDayOfWeek.getFullYear()}` : "";
+                    }
+
+                    return (
+                      <div key={wIdx} className="flex flex-col gap-1.5">
+                        {/* Month & Year Header */}
+                        <div className="h-4 relative">
+                          {headerLabel && (
+                            <span className="absolute left-0 top-0 text-[9px] text-zinc-500 font-extrabold font-mono whitespace-nowrap leading-none">
+                              {headerLabel}
+                            </span>
+                          )}
+                        </div>
+
+                        {week.map((cell, dIdx) => {
+                          // Color intensity based on GitHub dark mode theme
+                          const colors = [
+                            "bg-[#161b22] border border-[#1b2129]", // level 0
+                            "bg-[#0e4429] border border-[#135835]", // level 1
+                            "bg-[#006d32] border border-[#008f42]", // level 2
+                            "bg-[#26a641] border border-[#2dbf4c]", // level 3
+                            "bg-[#39d353] border border-[#44e660]", // level 4
+                          ];
+                          const level = cell.level !== undefined ? cell.level : Math.min(cell.count, 4);
+                          const colorClass = colors[Math.min(level, 4)];
+                          
+                          const dateFormatted = cell.date.toLocaleDateString("id-ID", {
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                          });
+
+                          return (
+                            <button
+                              key={dIdx}
+                              onMouseEnter={() =>
+                                setGithubTooltip(`${cell.count} kontribusi pada ${dateFormatted}`)
+                              }
+                              onClick={() =>
+                                setGithubTooltip(`${cell.count} kontribusi pada ${dateFormatted}`)
+                              }
+                              className={`w-3.5 h-3.5 rounded transition-transform hover:scale-125 focus:scale-125 ${colorClass}`}
+                              aria-label={`Contributions info`}
+                            />
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
