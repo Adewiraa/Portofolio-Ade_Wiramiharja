@@ -493,8 +493,8 @@ export default function Portfolio() {
                 />
               </div>
               <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border ${theme.badge}`}>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                SIAP BEKERJA / TERSEDIA
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                AKTIF BEKERJA
               </span>
             </div>
 
