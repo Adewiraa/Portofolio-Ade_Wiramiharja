@@ -481,8 +481,7 @@ export default function Portfolio() {
           >
             {/* Ambient Background Glow */}
             <div className={`absolute -right-20 -top-20 w-64 h-64 rounded-full blur-3xl opacity-10 transition-colors ${theme.accentBg}`} />
-            
-            <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
+            <div className="relative z-10 mb-6">
               <div className="relative w-20 h-20 sm:w-24 h-24 rounded-2xl border-2 border-zinc-800 overflow-hidden bg-zinc-950 shadow-md">
                 <Image
                   src="/avatar.png"
@@ -492,10 +491,6 @@ export default function Portfolio() {
                   priority
                 />
               </div>
-              <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border ${theme.badge}`}>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                AKTIF BEKERJA
-              </span>
             </div>
 
             <div className="relative z-10 space-y-4">
