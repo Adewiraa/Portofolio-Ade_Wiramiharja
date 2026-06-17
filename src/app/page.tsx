@@ -1008,64 +1008,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* CARD 10: Quick Message Form (lg:col-span-4 lg:row-span-1) */}
-          <div
-            id="contact"
-            className={`lg:col-span-4 lg:row-span-1 bg-zinc-900 border rounded-3xl p-6 flex flex-col justify-between transition-all duration-500 ${getHighlightClass("contact")}`}
-            style={getHighlightStyle("contact")}
-          >
-            <div className="flex items-center gap-2.5 mb-3">
-              <Send className={`w-5 h-5 ${theme.primary}`} />
-              <h2 className="font-bold text-white text-base">Kirim Pesan Instan</h2>
-            </div>
 
-            {isSubmitted ? (
-              <div className="flex-1 flex flex-col items-center justify-center text-center p-4 bg-zinc-950 border border-zinc-800/60 rounded-2xl gap-2">
-                <CheckCircle2 className="w-8 h-8 text-emerald-400 animate-bounce" />
-                <h4 className="text-sm font-bold text-white">Pesan Terkirim!</h4>
-                <p className="text-xs text-zinc-500">Terima kasih atas pesannya. Saya akan membalas secepat mungkin.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-3">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input
-                    type="text"
-                    placeholder="Nama Lengkap"
-                    value={formName}
-                    onChange={(e) => setFormName(e.target.value)}
-                    required
-                    className={`px-3.5 py-2 bg-zinc-950 border border-zinc-800 rounded-xl text-xs text-white placeholder-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 ${theme.ring}`}
-                  />
-                  <input
-                    type="email"
-                    placeholder="Alamat Email"
-                    value={formEmail}
-                    onChange={(e) => setFormEmail(e.target.value)}
-                    required
-                    className={`px-3.5 py-2 bg-zinc-950 border border-zinc-800 rounded-xl text-xs text-white placeholder-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 ${theme.ring}`}
-                  />
-                </div>
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    placeholder="Tulis pesan Anda di sini..."
-                    value={formMessage}
-                    onChange={(e) => setFormMessage(e.target.value)}
-                    required
-                    className={`flex-1 px-3.5 py-2 bg-zinc-950 border border-zinc-800 rounded-xl text-xs text-white placeholder-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 ${theme.ring}`}
-                  />
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`px-4 py-2 text-zinc-950 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all ${theme.accentBg} hover:opacity-90 active:scale-95 disabled:opacity-50`}
-                  >
-                    <span>{isSubmitting ? "Mengirim..." : "Kirim"}</span>
-                    <Send className="w-3 h-3" />
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
 
         </div>
       </main>
