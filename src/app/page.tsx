@@ -23,7 +23,8 @@ import {
   X,
   GraduationCap,
   Award,
-  Download
+  Download,
+  Menu
 } from "lucide-react";
 
 // Custom SVG Brand Icons since Lucide-react v1.0+ removed brand icons
@@ -196,6 +197,7 @@ export default function Portfolio() {
   // Scrolling and dynamic visibility states
   const [activeSection, setActiveSection] = useState<string>("");
   const [visibleSection, setVisibleSection] = useState<string>("about");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -452,24 +454,60 @@ export default function Portfolio() {
           })}
         </nav>
 
-        {/* Theme Accents Switches */}
-        <div className="flex items-center gap-3 bg-zinc-900 border border-zinc-800 rounded-full px-3 py-1.5">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-zinc-500 mr-1 hidden sm:inline">Tema:</span>
-          {(Object.keys(ACCENTS) as AccentKey[]).map((key) => {
-            const acc = ACCENTS[key];
-            const isSelected = activeAccent === key;
-            return (
-              <button
-                key={key}
-                onClick={() => setActiveAccent(key)}
-                className={`w-4 h-4 rounded-full transition-transform ${acc.accentBg} ${
-                  isSelected ? "scale-125 ring-2 ring-zinc-50 ring-offset-2 ring-offset-zinc-950" : "hover:scale-110 opacity-70"
-                }`}
-                title={acc.name}
-              />
-            );
-          })}
+        <div className="flex items-center gap-4">
+          {/* Theme Accents Switches */}
+          <div className="flex items-center gap-3 bg-zinc-900 border border-zinc-800 rounded-full px-3 py-1.5">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-zinc-500 mr-1 hidden sm:inline">Tema:</span>
+            {(Object.keys(ACCENTS) as AccentKey[]).map((key) => {
+              const acc = ACCENTS[key];
+              const isSelected = activeAccent === key;
+              return (
+                <button
+                  key={key}
+                  onClick={() => setActiveAccent(key)}
+                  className={`w-4 h-4 rounded-full transition-transform ${acc.accentBg} ${
+                    isSelected ? "scale-125 ring-2 ring-zinc-50 ring-offset-2 ring-offset-zinc-950" : "hover:scale-110 opacity-70"
+                  }`}
+                  title={acc.name}
+                />
+              );
+            })}
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-zinc-400 hover:text-zinc-50 hover:bg-zinc-900 border border-zinc-800 rounded-xl transition-all"
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-zinc-950/95 backdrop-blur-md border-b border-zinc-900 p-6 flex flex-col gap-4 md:hidden animate-in fade-in slide-in-from-top-4 duration-200">
+            {[
+              { id: "about", label: "Tentang" },
+              { id: "tech", label: "Keahlian" },
+              { id: "projects", label: "Proyek" },
+              { id: "experience", label: "Pengalaman" },
+              { id: "contact", label: "Kontak" },
+            ].map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  handleScrollTo(e, item.id);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="text-sm font-medium text-zinc-400 hover:text-zinc-50 py-2 border-b border-zinc-900/50 transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
       </header>
 
       {/* Main Content (Bento Grid Container) */}
@@ -529,8 +567,9 @@ export default function Portfolio() {
 
             <div className="relative z-10 flex flex-wrap gap-4 mt-8 pt-4 border-t border-zinc-800/60">
               <a
-                href="#contact"
-                onClick={(e) => handleScrollTo(e, "contact")}
+                href="https://wa.me/6285172046022"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-medium text-sm text-zinc-950 transition-all ${theme.accentBg} hover:opacity-90 active:scale-95`}
               >
                 Hubungi Saya
