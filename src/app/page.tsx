@@ -187,12 +187,6 @@ export default function Portfolio() {
   const [githubGrid, setGithubGrid] = useState<{ count: number; date: Date; level?: number }[][]>([]);
   const [githubTotal, setGithubTotal] = useState<number | null>(null);
 
-  // Form states
-  const [formName, setFormName] = useState("");
-  const [formEmail, setFormEmail] = useState("");
-  const [formMessage, setFormMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Scrolling and dynamic visibility states
   const [activeSection, setActiveSection] = useState<string>("");
@@ -363,21 +357,7 @@ export default function Portfolio() {
     };
   }, [activeAccent]); // Re-initialize if theme changes to fetch correct class definitions
 
-  // Submit Contact Form
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formName || !formEmail || !formMessage) return;
 
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormName("");
-      setFormEmail("");
-      setFormMessage("");
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1200);
-  };
 
   // Tech Stacks Data
   const techCategories = [
