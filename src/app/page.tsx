@@ -393,7 +393,7 @@ export default function Portfolio() {
     },
   ];
 
-  const githubWeeks = 16;
+  const githubWeeks = 52;
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-50 font-sans selection:bg-zinc-800 selection:text-zinc-200">
@@ -566,9 +566,6 @@ export default function Portfolio() {
           <div
             className={`lg:col-span-1 lg:row-span-2 bg-zinc-900 border border-zinc-850 rounded-3xl overflow-hidden relative group min-h-[350px] lg:min-h-0`}
           >
-            {/* Outer glowing halo on hover */}
-            <div className="absolute -inset-0.5 bg-gradient-to-tr from-sky-500 to-indigo-500 opacity-0 group-hover:opacity-40 blur-md transition duration-500 z-10 pointer-events-none" />
-            
             <Image
               src="/avatar.png"
               alt="Ade Wiramiharja Profile Photo"
@@ -697,7 +694,7 @@ export default function Portfolio() {
                 <span>Lebih banyak</span>
               </div>
               
-              <div className="overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950">
+              <div className="overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950 flex lg:justify-center">
                 <div className="flex gap-1.5 w-max">
                   {githubGrid.map((week, wIdx) => (
                     <div key={wIdx} className="flex flex-col gap-1.5">
