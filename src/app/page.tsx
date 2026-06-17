@@ -761,8 +761,6 @@ export default function Portfolio() {
 
             {/* Timeline Vertical */}
             <div className="flex-1 overflow-y-auto max-h-[350px] pr-3 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950/40 relative pl-1 space-y-6 sm:space-y-8 py-2">
-              {/* Timeline Line */}
-              <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-zinc-800" />
 
               {/* Item 1 */}
               <div className="relative pl-9">
