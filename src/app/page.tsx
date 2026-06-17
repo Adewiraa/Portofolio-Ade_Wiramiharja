@@ -498,7 +498,8 @@ export default function Portfolio() {
                       src="/avatar.png"
                       alt="Ade Wiramiharja Profile Photo"
                       fill
-                      className="object-cover object-top scale-105 group-hover/avatar:scale-110 transition-transform duration-500"
+                      unoptimized
+                      className="object-cover object-center scale-105 group-hover/avatar:scale-110 transition-transform duration-500"
                       priority
                     />
                   </div>
