@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
   Mail,
@@ -187,6 +187,9 @@ export default function Portfolio() {
   const [githubGrid, setGithubGrid] = useState<{ count: number; date: Date; level?: number }[][]>([]);
   const [githubTotal, setGithubTotal] = useState<number | null>(null);
 
+  // Ref to auto-scroll contribution grid to the rightmost (most recent) position on mobile
+  const githubScrollRef = useRef<HTMLDivElement>(null);
+
 
   // Scrolling and dynamic visibility states
   const [activeSection, setActiveSection] = useState<string>("");
@@ -243,6 +246,11 @@ export default function Portfolio() {
   // Handle client-side initialization
   useEffect(() => {
     setIsClient(true);
+
+    // Auto-scroll contribution grid to show the most recent weeks on mobile
+    if (githubScrollRef.current) {
+      githubScrollRef.current.scrollLeft = githubScrollRef.current.scrollWidth;
+    }
     const updateTime = () => {
       const options: Intl.DateTimeFormatOptions = {
         timeZone: "Asia/Jakarta",
@@ -356,6 +364,13 @@ export default function Portfolio() {
       observer.disconnect();
     };
   }, [activeAccent]); // Re-initialize if theme changes to fetch correct class definitions
+
+  // Auto-scroll contribution grid to most recent (rightmost) position whenever data updates
+  useEffect(() => {
+    if (githubScrollRef.current && githubGrid.length > 0) {
+      githubScrollRef.current.scrollLeft = githubScrollRef.current.scrollWidth;
+    }
+  }, [githubGrid]);
 
 
 
@@ -694,7 +709,7 @@ export default function Portfolio() {
                 <span>Lebih banyak</span>
               </div>
               
-              <div className="overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950 flex lg:justify-center">
+              <div ref={githubScrollRef} className="overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950 flex lg:justify-center">
                 <div className="flex gap-1.5 w-max select-none">
                   {/* Day labels column on the left */}
                   <div className="flex flex-col gap-1.5 pr-1">
