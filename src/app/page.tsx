@@ -564,7 +564,7 @@ export default function Portfolio() {
 
           {/* CARD 1B: Dedicated Profile Photo Card (lg:col-span-1 lg:row-span-2) */}
           <div
-            className={`lg:col-span-1 lg:row-span-2 bg-zinc-900 border border-zinc-850 rounded-3xl overflow-hidden relative group`}
+            className={`lg:col-span-1 lg:row-span-2 bg-zinc-900 border border-zinc-850 rounded-3xl overflow-hidden relative group min-h-[350px] lg:min-h-0`}
           >
             {/* Outer glowing halo on hover */}
             <div className="absolute -inset-0.5 bg-gradient-to-tr from-sky-500 to-indigo-500 opacity-0 group-hover:opacity-40 blur-md transition duration-500 z-10 pointer-events-none" />
