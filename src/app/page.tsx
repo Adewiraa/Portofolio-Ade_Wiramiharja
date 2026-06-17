@@ -484,15 +484,31 @@ export default function Portfolio() {
           >
             {/* Ambient Background Glow */}
             <div className={`absolute -right-20 -top-20 w-64 h-64 rounded-full blur-3xl opacity-10 transition-colors ${theme.accentBg}`} />
-            <div className="relative z-10 mb-6">
-              <div className="relative w-20 h-20 sm:w-24 h-24 rounded-2xl border-2 border-zinc-800 overflow-hidden bg-zinc-950 shadow-md">
-                <Image
-                  src="/avatar.png"
-                  alt="Ade Wiramiharja Profile Photo"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+            <div className="relative z-10 mb-6 flex items-start justify-between">
+              <div className="relative group/avatar">
+                {/* Outer glowing halo */}
+                <div className={`absolute -inset-1 rounded-[28px] bg-gradient-to-tr from-zinc-700 via-zinc-800 to-zinc-950 blur-sm opacity-60 group-hover/avatar:opacity-100 transition duration-500`} />
+                <div className={`absolute -inset-0.5 rounded-[26px] bg-gradient-to-tr from-sky-500 to-indigo-500 opacity-30 group-hover/avatar:opacity-80 blur-md transition duration-500`} />
+                
+                {/* Main Container */}
+                <div className="relative w-24 h-24 sm:w-28 h-28 rounded-[24px] p-1 bg-zinc-950/80 backdrop-blur-xl border border-zinc-800/80 shadow-2xl flex items-center justify-center overflow-hidden">
+                  {/* Inner rounded container for the image */}
+                  <div className="relative w-full h-full rounded-[18px] overflow-hidden bg-zinc-900">
+                    <Image
+                      src="/avatar.png"
+                      alt="Ade Wiramiharja Profile Photo"
+                      fill
+                      className="object-cover object-top scale-105 group-hover/avatar:scale-110 transition-transform duration-500"
+                      priority
+                    />
+                  </div>
+                </div>
+
+                {/* Mini Online Status Badge */}
+                <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-zinc-950"></span>
+                </span>
               </div>
             </div>
 
