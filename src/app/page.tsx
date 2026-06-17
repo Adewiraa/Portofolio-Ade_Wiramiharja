@@ -20,7 +20,10 @@ import {
   Cpu,
   ArrowRight,
   User,
-  X
+  X,
+  GraduationCap,
+  Award,
+  Download
 } from "lucide-react";
 
 // Custom SVG Brand Icons since Lucide-react v1.0+ removed brand icons
@@ -516,6 +519,14 @@ export default function Portfolio() {
                 Hubungi Saya
                 <ArrowRight className="w-4 h-4" />
               </a>
+              <a
+                href="/cv.pdf"
+                download="CV_Ade_Wiramiharja.pdf"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-zinc-950 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-xl font-medium text-sm text-zinc-300 hover:text-white transition-all active:scale-95"
+              >
+                <Download className="w-4 h-4" />
+                Unduh CV
+              </a>
               <div className="flex items-center gap-2">
                 <a
                   href="https://github.com/Adewiraa"
@@ -824,9 +835,48 @@ export default function Portfolio() {
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="mt-4 pt-4 border-t border-zinc-800/60 text-center">
-              <span className="text-[11px] font-mono text-zinc-500">Status Akademis: Lulus S1 Teknik Informatika (Skripsi Tuntas)</span>
+          {/* CARD 7.5: Education & Certifications (lg:col-span-2 lg:row-span-1) */}
+          <div
+            className={`lg:col-span-2 lg:row-span-1 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 ${theme.hoverBorder}`}
+          >
+            <div className="flex items-center gap-2.5 mb-4">
+              <GraduationCap className={`w-5 h-5 ${theme.primary}`} />
+              <h2 className="font-bold text-white text-base">Pendidikan & Sertifikasi</h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
+              {/* Education Column */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-xs text-zinc-400 font-semibold border-b border-zinc-800 pb-1.5">
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  <span>Pendidikan Formal</span>
+                </div>
+                <div className="space-y-1">
+                  <h4 className="text-xs font-bold text-white">S1 Teknik Informatika</h4>
+                  <p className="text-[11px] text-zinc-400">STIKOM Poltek Cirebon</p>
+                  <p className="text-[10px] text-zinc-500 font-mono">2019 - 2023 • IPK 3.59 (Lulus)</p>
+                </div>
+              </div>
+
+              {/* Certifications Column */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-xs text-zinc-400 font-semibold border-b border-zinc-800 pb-1.5">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>Sertifikasi Profesional</span>
+                </div>
+                <div className="space-y-2">
+                  <div className="space-y-0.5">
+                    <h4 className="text-xs font-bold text-white">Artificial Intelligence Lvl 1</h4>
+                    <p className="text-[10px] text-zinc-500 font-mono">LSP Stikom • 2023</p>
+                  </div>
+                  <div className="space-y-0.5">
+                    <h4 className="text-xs font-bold text-white">Database Administrator Lvl 1</h4>
+                    <p className="text-[10px] text-zinc-500 font-mono">LSP Stikom • 2023</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -902,10 +952,10 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* CARD 10: Quick Message Form (lg:col-span-2 lg:row-span-1) */}
+          {/* CARD 10: Quick Message Form (lg:col-span-4 lg:row-span-1) */}
           <div
             id="contact"
-            className={`lg:col-span-2 lg:row-span-1 bg-zinc-900 border rounded-3xl p-6 flex flex-col justify-between transition-all duration-500 ${getHighlightClass("contact")}`}
+            className={`lg:col-span-4 lg:row-span-1 bg-zinc-900 border rounded-3xl p-6 flex flex-col justify-between transition-all duration-500 ${getHighlightClass("contact")}`}
             style={getHighlightStyle("contact")}
           >
             <div className="flex items-center gap-2.5 mb-3">
