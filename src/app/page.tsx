@@ -135,18 +135,18 @@ const PROJECTS: Project[] = [
     ]
   },
   {
-    title: "Portal Bimbingan Skripsi",
-    category: "Academic Portal",
-    year: "2026",
+    title: "Prediksi Harga Saham Monte Carlo",
+    category: "Financial Analytics & Prediction",
+    year: "2024",
     image: "/skripsi.png",
-    description: "Platform manajemen tugas akhir akademik. Memfasilitasi pendaftaran judul, pencocokan otomatis dosen pembimbing, pemantauan riwayat kemajuan bab, hingga penjadwalan serta penilaian sidang.",
-    longDescription: "Portal akademik berbasis web untuk memfasilitasi komunikasi dan administrasi bimbingan tugas akhir/skripsi antara mahasiswa, dosen pembimbing, dan kaprodi. Sistem ini mendigitalisasi pengajuan judul, pelaporan kemajuan bab, asistensi online, jadwal sidang, hingga penginputan nilai sidang akhir secara terpusat.",
-    tags: ["Next.js", "TailwindCSS", "PostgreSQL", "Prisma ORM", "TypeScript"],
+    description: "Sistem simulasi dan prediksi pergerakan harga saham berbasis web menggunakan metode Monte Carlo (Geometric Brownian Motion) untuk memproyeksikan tren harga masa depan.",
+    longDescription: "Aplikasi Prediksi Harga Saham dengan Metode Monte Carlo (Upgrade Version) adalah sistem analisis keuangan berbasis web yang dirancang untuk mensimulasikan dan memproyeksikan pergerakan harga saham di masa depan. Dengan memanfaatkan model Geometric Brownian Motion (GBM), sistem ini memproses data historis saham untuk menentukan nilai drift dan volatilitas, menyimulasikan ribuan iterasi harga secara acak, serta menyajikan tingkat probabilitas dan risiko investasi bagi pengguna.",
+    tags: ["PHP/Laravel", "MySQL", "Chart.js", "Bootstrap", "MathJS", "Monte Carlo"],
     features: [
-      { title: "Online Guidance Logbook", desc: "Catatan asistensi digital untuk melacak progres revisi bab, feedback dosen, dan status persetujuan (acc) sidang." },
-      { title: "Automatic Supervisor Allocation", desc: "Sistem cerdas pembagian dosen pembimbing berdasarkan relevansi keahlian dosen dengan topik skripsi mahasiswa." },
-      { title: "Exam & Defense Scheduling", desc: "Sistem penjadwalan sidang otomatis yang memeriksa kesediaan waktu dosen penguji dan ruang sidang." },
-      { title: "Academic Analytics Dashboard", desc: "Dashboard bagi kaprodi untuk memantau durasi kelulusan mahasiswa dan beban kerja pembimbingan tiap dosen." }
+      { title: "Geometric Brownian Motion (GBM)", desc: "Model stokastik inti untuk merepresentasikan tren dan pergerakan acak harga saham berdasarkan volatilitas historis." },
+      { title: "Interactive Iteration Chart", desc: "Visualisasi dinamis dari ribuan lintasan simulasi harga saham secara interaktif menggunakan pustaka Chart.js." },
+      { title: "Probability & Risk Analytics", desc: "Kalkulasi statistik untuk mengukur persentase pencapaian target harga saham serta analisis skenario risiko." },
+      { title: "Historical Stock Management", desc: "Modul impor dan pengelolaan data historis harga penutupan harian (Close Price) saham sebagai dasar simulasi." }
     ]
   }
 ];
