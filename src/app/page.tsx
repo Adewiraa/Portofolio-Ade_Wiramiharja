@@ -760,7 +760,7 @@ export default function Portfolio() {
             </div>
 
             {/* Timeline Vertical */}
-            <div className="relative border-l-2 border-zinc-800 pl-6 space-y-6 sm:space-y-8 py-2">
+            <div className="flex-1 overflow-y-auto max-h-[350px] pr-3 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-zinc-950/40 relative border-l-2 border-zinc-800 pl-6 space-y-6 sm:space-y-8 py-2">
               {/* Item 1 */}
               <div className="relative">
                 <div className={`absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full bg-zinc-950 border-2 ${theme.border} flex items-center justify-center`}>
@@ -768,13 +768,18 @@ export default function Portfolio() {
                 </div>
                 <div className="space-y-1">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <h4 className="text-sm sm:text-base font-bold text-white">Fullstack Developer</h4>
-                    <span className="text-[10px] sm:text-xs font-mono text-zinc-500">2024 - Sekarang</span>
+                    <h4 className="text-sm sm:text-base font-bold text-white">Full Stack Developer</h4>
+                    <span className="text-[10px] sm:text-xs font-mono text-zinc-500">Agustus 2024 - Sekarang</span>
                   </div>
-                  <p className="text-xs text-zinc-400 font-medium">PT Solusi Teknologi Nusantara</p>
-                  <ul className="text-xs text-zinc-500 space-y-1 list-disc pl-4 pt-1">
-                    <li>Mengoptimalkan performa kueri basis data PostgreSQL, memotong latensi API hingga 40%.</li>
-                    <li>Merancang dan memigrasikan interface dashboard admin ke arsitektur Next.js.</li>
+                  <p className="text-xs text-zinc-400 font-semibold">PT. DIPA PHARMALAB INTERSAINS, Majalengka</p>
+                  <p className="text-[10px] text-zinc-500 italic">Role: Staff</p>
+                  <ul className="text-[11px] text-zinc-500 space-y-1.5 list-disc pl-4 pt-1 leading-relaxed">
+                    <li>Mengembangkan dan memelihara <strong>DIPA CORE</strong> (Laravel, MySQL), sistem web internal/super apps untuk digitalisasi proses operasional di Produksi, QA, QC, Gudang, Teknik, dan HR.</li>
+                    <li>Membuat modul operasional utama seperti <strong>DIPA OTAS, DIPA VALID, DIPA FETCH, DIPA COMPLY</strong>, dan <strong>DIPA OPTRAC</strong> dengan hak akses dinamis berbasis peran (RBAC).</li>
+                    <li>Mengintegrasikan alur persetujuan digital (<strong>approval workflow</strong>) untuk proses operasional dan administrasi paperless (Lembur, Retain Sample, Reagen Lab, dll.).</li>
+                    <li>Membangun tampilan antarmuka modern yang responsif menggunakan <strong>Laravel Blade, Bootstrap, DataTables, AJAX</strong>, dan integrasi notifikasi otomatis via <strong>n8n / WhatsApp Gateway</strong>.</li>
+                    <li>Mengoptimalkan basis data, query SQL, refactoring kode Laravel, serta mengelola deployment server menggunakan workflow manual berbasis <strong>GitHub, WinSCP, dan Laragon</strong>.</li>
+                    <li>Mengembangkan konsep integrasi <strong>AI Assistant</strong> internal untuk otomatisasi analisis dan asisten pintar dalam membantu pengguna memahami data kontekstual.</li>
                   </ul>
                 </div>
               </div>
@@ -786,13 +791,17 @@ export default function Portfolio() {
                 </div>
                 <div className="space-y-1">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <h4 className="text-sm sm:text-base font-bold text-white">Fullstack Engineer</h4>
-                    <span className="text-[10px] sm:text-xs font-mono text-zinc-500">2022 - 2024</span>
+                    <h4 className="text-sm sm:text-base font-bold text-white">Fullstack Developer</h4>
+                    <span className="text-[10px] sm:text-xs font-mono text-zinc-500">Oktober 2023 - Mei 2024</span>
                   </div>
-                  <p className="text-xs text-zinc-400 font-medium">Mitra Teknologi Mandiri (Studio Agen)</p>
-                  <ul className="text-xs text-zinc-500 space-y-1 list-disc pl-4 pt-1">
-                    <li>Mengintegrasikan modul pembayaran (payment gateway) pihak ketiga dengan RESTful API Laravel.</li>
-                    <li>Membangun aplikasi POS Apotek menggunakan React dan Node.js Express.</li>
+                  <p className="text-xs text-zinc-400 font-semibold">HALO DIGITAL NUSANTARA, Bogor</p>
+                  <p className="text-[10px] text-zinc-500 italic">Role: Pegawai Magang</p>
+                  <ul className="text-[11px] text-zinc-500 space-y-1.5 list-disc pl-4 pt-1 leading-relaxed">
+                    <li>Pengembangan Frontend: Membangun UI responsive menggunakan HTML, CSS, dan JavaScript untuk pengalaman pengguna yang intuitif.</li>
+                    <li>Pengembangan Backend: Membangun server, database serta logika.</li>
+                    <li>Pengujian dan Debugging: Melakukan pengujian menyeluruh dan mengidentifikasi serta memperbaiki bug aplikasi.</li>
+                    <li>Kolaborasi Tim: Bekerja sama dengan anggota tim untuk perencanaan, pengembangan, dan rilis fitur aplikasi.</li>
+                    <li>Pemeliharaan dan Skalabilitas: Memantau kinerja, melakukan pemeliharaan, dan mengoptimalkan aplikasi agar dapat menangani lonjakan lalu lintas.</li>
                   </ul>
                 </div>
               </div>
@@ -804,12 +813,17 @@ export default function Portfolio() {
                 </div>
                 <div className="space-y-1">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <h4 className="text-sm sm:text-base font-bold text-white">Junior Web Developer</h4>
-                    <span className="text-[10px] sm:text-xs font-mono text-zinc-500">2021 - 2022</span>
+                    <h4 className="text-sm sm:text-base font-bold text-white">Fullstack Developer</h4>
+                    <span className="text-[10px] sm:text-xs font-mono text-zinc-500">Agustus 2022 - Desember 2022</span>
                   </div>
-                  <p className="text-xs text-zinc-400 font-medium">Digital Agency Creative</p>
-                  <ul className="text-xs text-zinc-500 space-y-1 list-disc pl-4 pt-1">
-                    <li>Mengembangkan website klien yang responsif dan SEO-friendly menggunakan HTML, CSS, dan Tailwind.</li>
+                  <p className="text-xs text-zinc-400 font-semibold">MEGA CAPITAL SEKURITAS, Jakarta</p>
+                  <p className="text-[10px] text-zinc-500 italic">Role: Pegawai Magang</p>
+                  <ul className="text-[11px] text-zinc-500 space-y-1.5 list-disc pl-4 pt-1 leading-relaxed">
+                    <li>SQL Server: Membangun struktur database yang efisien dan kuat untuk aplikasi bisnis modern.</li>
+                    <li>React Native: Dasar-dasar pengembangan aplikasi lintas platform dengan framework JavaScript populer.</li>
+                    <li>Figma: Alat desain UI/UX untuk membuat prototipe dan desain antarmuka pengguna yang menarik.</li>
+                    <li>Figma to React Native: Mengubah desain Figma menjadi komponen UI React Native yang berfungsi.</li>
+                    <li>Memahami konsep dasar dan sintaksis dalam pemrograman ASP untuk pengembangan web.</li>
                   </ul>
                 </div>
               </div>
