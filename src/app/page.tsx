@@ -345,7 +345,7 @@ export default function Portfolio() {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = ["about", "tech", "projects", "experience", "contact"];
+    const sections = ["about", "tech", "projects", "experience"];
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -406,14 +406,12 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
           {[
             { id: "about", label: "Tentang" },
             { id: "tech", label: "Keahlian" },
             { id: "projects", label: "Proyek" },
             { id: "experience", label: "Pengalaman" },
-            { id: "contact", label: "Kontak" },
           ].map((item) => {
             const isActive = visibleSection === item.id;
             return (
@@ -472,7 +470,6 @@ export default function Portfolio() {
               { id: "tech", label: "Keahlian" },
               { id: "projects", label: "Proyek" },
               { id: "experience", label: "Pengalaman" },
-              { id: "contact", label: "Kontak" },
             ].map((item) => (
               <a
                 key={item.id}
