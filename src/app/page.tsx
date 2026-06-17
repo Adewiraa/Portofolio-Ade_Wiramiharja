@@ -499,32 +499,11 @@ export default function Portfolio() {
           >
             {/* Ambient Background Glow */}
             <div className={`absolute -right-20 -top-20 w-64 h-64 rounded-full blur-3xl opacity-10 transition-colors ${theme.accentBg}`} />
-            <div className="relative z-10 mb-6 flex items-start justify-between">
-              <div className="relative group/avatar">
-                {/* Outer glowing halo */}
-                <div className={`absolute -inset-1 rounded-[28px] bg-gradient-to-tr from-zinc-700 via-zinc-800 to-zinc-950 blur-sm opacity-60 group-hover/avatar:opacity-100 transition duration-500`} />
-                <div className={`absolute -inset-0.5 rounded-[26px] bg-gradient-to-tr from-sky-500 to-indigo-500 opacity-30 group-hover/avatar:opacity-80 blur-md transition duration-500`} />
-                
-                {/* Main Container */}
-                <div className="relative w-24 h-32 sm:w-28 h-36 rounded-[24px] p-1 bg-zinc-950/80 backdrop-blur-xl border border-zinc-800/80 shadow-2xl flex items-center justify-center overflow-hidden">
-                  {/* Inner rounded container for the image */}
-                  <div className="relative w-full h-full rounded-[18px] overflow-hidden bg-zinc-900">
-                    <Image
-                      src="/avatar.png"
-                      alt="Ade Wiramiharja Profile Photo"
-                      fill
-                      unoptimized
-                      className="object-cover object-top scale-100 group-hover/avatar:scale-105 transition-transform duration-500"
-                      priority
-                    />
-                  </div>
-                </div>
-
-                {/* Mini Online Status Badge */}
-                <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-zinc-950"></span>
-                </span>
+            
+            <div className="relative z-10 mb-6 flex items-center justify-between">
+              <div className="px-3 py-1.5 bg-zinc-950/60 border border-zinc-800/80 rounded-xl flex items-center gap-2 text-zinc-400">
+                <Terminal className={`w-4 h-4 ${theme.primary}`} />
+                <span className="font-mono text-xs font-semibold tracking-wider">DEV.PROFILE</span>
               </div>
             </div>
 
@@ -583,72 +562,107 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* CARD 2: Interactive Tech Stack (lg:col-span-2 lg:row-span-1) */}
+          {/* CARD 1B: Dedicated Profile Photo Card (lg:col-span-1 lg:row-span-2) */}
           <div
-            id="tech"
-            className={`lg:col-span-2 lg:row-span-1 bg-zinc-900 border rounded-3xl p-6 flex flex-col justify-between transition-all duration-500 ${getHighlightClass("tech")}`}
-            style={getHighlightStyle("tech")}
+            className={`lg:col-span-1 lg:row-span-2 bg-zinc-900 border border-zinc-850 rounded-3xl overflow-hidden relative group`}
           >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2.5">
-                <Code2 className={`w-5 h-5 ${theme.primary}`} />
-                <h2 className="font-bold text-white text-base">Ekosistem Teknologi</h2>
-              </div>
-              <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-mono">Sentuh Ikon</span>
-            </div>
+            {/* Outer glowing halo on hover */}
+            <div className="absolute -inset-0.5 bg-gradient-to-tr from-sky-500 to-indigo-500 opacity-0 group-hover:opacity-40 blur-md transition duration-500 z-10 pointer-events-none" />
+            
+            <Image
+              src="/avatar.png"
+              alt="Ade Wiramiharja Profile Photo"
+              fill
+              unoptimized
+              className="object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-700"
+              priority
+            />
 
-            {/* Icons Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {techCategories.map((cat, idx) => (
-                <div key={idx} className="space-y-2">
-                  <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-semibold border-b border-zinc-800 pb-1">
-                    {cat.icon}
-                    <span>{cat.title}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {cat.items.map((item, itemIdx) => {
-                      const isHovered = selectedTech?.name === item.name;
-                      return (
-                        <button
-                          key={itemIdx}
-                          onMouseEnter={() => setSelectedTech(item)}
-                          onClick={() => setSelectedTech(item)}
-                          className={`px-2 py-1 text-xs rounded border transition-colors ${
-                            isHovered
-                              ? `${theme.accentBg} text-zinc-950 border-transparent font-semibold`
-                              : "bg-zinc-950 border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
-                          }`}
-                        >
-                          {item.name}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Interactive Feedback Area */}
-            <div className="mt-4 p-3 bg-zinc-950 border border-zinc-800/80 rounded-xl flex items-start justify-between gap-4 min-h-[60px]">
-              {selectedTech ? (
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-zinc-200">{selectedTech.name}</span>
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono ${theme.badge}`}>
-                      {selectedTech.level}
-                    </span>
-                  </div>
-                  <p className="text-xs text-zinc-400 leading-relaxed">{selectedTech.desc}</p>
-                </div>
-              ) : (
-                <p className="text-xs text-zinc-500 italic">Arahkan kursor ke teknologi untuk detail penguasaan.</p>
-              )}
+            {/* Status Badge overlay */}
+            <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2 bg-zinc-950/80 backdrop-blur-md border border-zinc-800 px-3 py-1.5 rounded-full shadow-lg">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <span className="text-[10px] font-mono font-bold text-zinc-350 tracking-wider uppercase">AVAILABLE</span>
             </div>
           </div>
 
-          {/* CARD 3: Live GitHub Contribution Grid (lg:col-span-2 lg:row-span-1) */}
+          {/* CARD 8: Live Clock Widget (lg:col-span-1 lg:row-span-1) */}
           <div
-            className={`lg:col-span-2 lg:row-span-1 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 ${theme.hoverBorder}`}
+            className={`lg:col-span-1 lg:row-span-1 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 ${theme.hoverBorder}`}
+          >
+            <div className="flex items-center gap-2">
+              <Clock className={`w-4 h-4 ${theme.primary}`} />
+              <span className="text-xs text-zinc-400 font-bold">Waktu Lokal Saya</span>
+            </div>
+            
+            <div className="my-4">
+              {isClient ? (
+                <div className="text-xl sm:text-2xl font-extrabold tracking-tight font-mono text-white">
+                  {timeString}
+                </div>
+              ) : (
+                <div className="text-xl sm:text-2xl font-extrabold tracking-tight font-mono text-zinc-600">
+                  --:--:-- WIB
+                </div>
+              )}
+              <div className="flex items-center gap-1.5 mt-2">
+                <MapPin className="w-3.5 h-3.5 text-zinc-500" />
+                <span className="text-xs text-zinc-500">Jawa Barat, Indonesia</span>
+              </div>
+            </div>
+
+            <div className="text-[10px] font-semibold text-zinc-500 bg-zinc-950 border border-zinc-800/60 px-2 py-1 rounded-md text-center">
+              Online di luar jam kantor reguler
+            </div>
+          </div>
+
+          {/* CARD 9: Socials & Connect (lg:col-span-1 lg:row-span-1) */}
+          <div
+            className={`lg:col-span-1 lg:row-span-1 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 ${theme.hoverBorder}`}
+          >
+            <div className="flex items-center gap-2">
+              <Sparkles className={`w-4 h-4 ${theme.primary}`} />
+              <span className="text-xs text-zinc-400 font-bold">Mari Berjejaring</span>
+            </div>
+
+            <div className="grid grid-cols-3 gap-2 my-4">
+              <a
+                href="https://github.com/Adewiraa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center p-2 bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 rounded-xl hover:bg-zinc-800/40 text-zinc-400 hover:text-white transition-all"
+              >
+                <Github className="w-5 h-5 mb-1" />
+                <span className="text-[10px] font-mono">GitHub</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ade-wiramiharja-2b4b94202/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center p-2 bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 rounded-xl hover:bg-zinc-800/40 text-zinc-400 hover:text-white transition-all"
+              >
+                <Linkedin className="w-5 h-5 mb-1" />
+                <span className="text-[10px] font-mono">LinkedIN</span>
+              </a>
+              <a
+                href="mailto:ade.wiramiharjaa@gmail.com"
+                className="flex flex-col items-center justify-center p-2 bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 rounded-xl hover:bg-zinc-800/40 text-zinc-400 hover:text-white transition-all"
+              >
+                <Mail className="w-5 h-5 mb-1" />
+                <span className="text-[10px] font-mono">Email</span>
+              </a>
+            </div>
+
+            <div className="text-[10px] font-mono text-zinc-500 text-center">
+              Respon pesan dalam waktu &lt; 24 jam.
+            </div>
+          </div>
+
+          {/* CARD 3: Live GitHub Contribution Grid (lg:col-span-4 lg:row-span-1) */}
+          <div
+            className={`lg:col-span-4 lg:row-span-1 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 ${theme.hoverBorder}`}
           >
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2.5">
@@ -913,75 +927,66 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* CARD 8: Live Clock Widget (lg:col-span-1 lg:row-span-1) */}
+          {/* CARD 2: Interactive Tech Stack (lg:col-span-2 lg:row-span-1) */}
           <div
-            className={`lg:col-span-1 lg:row-span-1 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 ${theme.hoverBorder}`}
+            id="tech"
+            className={`lg:col-span-2 lg:row-span-1 bg-zinc-900 border rounded-3xl p-6 flex flex-col justify-between transition-all duration-500 ${getHighlightClass("tech")}`}
+            style={getHighlightStyle("tech")}
           >
-            <div className="flex items-center gap-2">
-              <Clock className={`w-4 h-4 ${theme.primary}`} />
-              <span className="text-xs text-zinc-400 font-bold">Waktu Lokal Saya</span>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2.5">
+                <Code2 className={`w-5 h-5 ${theme.primary}`} />
+                <h2 className="font-bold text-white text-base">Ekosistem Teknologi</h2>
+              </div>
+              <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-mono">Sentuh Ikon</span>
             </div>
-            
-            <div className="my-4">
-              {isClient ? (
-                <div className="text-xl sm:text-2xl font-extrabold tracking-tight font-mono text-white">
-                  {timeString}
+
+            {/* Icons Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {techCategories.map((cat, idx) => (
+                <div key={idx} className="space-y-2">
+                  <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-semibold border-b border-zinc-800 pb-1">
+                    {cat.icon}
+                    <span>{cat.title}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {cat.items.map((item, itemIdx) => {
+                      const isHovered = selectedTech?.name === item.name;
+                      return (
+                        <button
+                          key={itemIdx}
+                          onMouseEnter={() => setSelectedTech(item)}
+                          onClick={() => setSelectedTech(item)}
+                          className={`px-2 py-1 text-xs rounded border transition-colors ${
+                            isHovered
+                              ? `${theme.accentBg} text-zinc-950 border-transparent font-semibold`
+                              : "bg-zinc-950 border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+                          }`}
+                        >
+                          {item.name}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Interactive Feedback Area */}
+            <div className="mt-4 p-3 bg-zinc-950 border border-zinc-800/80 rounded-xl flex items-start justify-between gap-4 min-h-[60px]">
+              {selectedTech ? (
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-zinc-200">{selectedTech.name}</span>
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono ${theme.badge}`}>
+                      {selectedTech.level}
+                    </span>
+                  </div>
+                  <p className="text-xs text-zinc-400 leading-relaxed">{selectedTech.desc}</p>
                 </div>
               ) : (
-                <div className="text-xl sm:text-2xl font-extrabold tracking-tight font-mono text-zinc-600">
-                  --:--:-- WIB
-                </div>
+                <p className="text-xs text-zinc-500 italic">Arahkan kursor ke teknologi untuk detail penguasaan.</p>
               )}
-              <div className="flex items-center gap-1.5 mt-2">
-                <MapPin className="w-3.5 h-3.5 text-zinc-500" />
-                <span className="text-xs text-zinc-500">Jawa Barat, Indonesia</span>
-              </div>
-            </div>
-
-            <div className="text-[10px] font-semibold text-zinc-500 bg-zinc-950 border border-zinc-800/60 px-2 py-1 rounded-md text-center">
-              Online di luar jam kantor reguler
-            </div>
-          </div>
-
-          {/* CARD 9: Socials & Connect (lg:col-span-1 lg:row-span-1) */}
-          <div
-            className={`lg:col-span-1 lg:row-span-1 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 ${theme.hoverBorder}`}
-          >
-            <div className="flex items-center gap-2">
-              <Sparkles className={`w-4 h-4 ${theme.primary}`} />
-              <span className="text-xs text-zinc-400 font-bold">Mari Berjejaring</span>
-            </div>
-
-            <div className="grid grid-cols-3 gap-2 my-4">
-              <a
-                href="https://github.com/Adewiraa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center p-2 bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 rounded-xl hover:bg-zinc-800/40 text-zinc-400 hover:text-white transition-all"
-              >
-                <Github className="w-5 h-5 mb-1" />
-                <span className="text-[10px] font-mono">GitHub</span>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/ade-wiramiharja-2b4b94202/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center p-2 bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 rounded-xl hover:bg-zinc-800/40 text-zinc-400 hover:text-white transition-all"
-              >
-                <Linkedin className="w-5 h-5 mb-1" />
-                <span className="text-[10px] font-mono">LinkedIN</span>
-              </a>
-              <a
-                href="mailto:ade.wiramiharjaa@gmail.com"
-                className="flex flex-col items-center justify-center p-2 bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 rounded-xl hover:bg-zinc-800/40 text-zinc-400 hover:text-white transition-all"
-              >
-                <Mail className="w-5 h-5 mb-1" />
-                <span className="text-[10px] font-mono">Email</span>
-              </a>
-            </div>
-
-            <div className="text-[10px] font-mono text-zinc-500 text-center">
-              Respon pesan dalam waktu &lt; 24 jam.
             </div>
           </div>
 
