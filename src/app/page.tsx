@@ -591,15 +591,12 @@ export default function Portfolio() {
 
           {/* CARD 1B: Dedicated Profile Photo Card (lg:col-span-1 lg:row-span-2) */}
           <div
-            className={`lg:col-span-1 lg:row-span-2 bg-zinc-900 border border-zinc-850 rounded-3xl overflow-hidden relative group min-h-[350px] lg:min-h-0`}
+            className="lg:col-span-1 lg:row-span-2 bg-zinc-900 rounded-3xl overflow-hidden relative group min-h-[350px] lg:min-h-0"
           >
-            <Image
+            <img
               src={PROFILE_IMAGES[activeAccent]}
               alt="Ade Wiramiharja Profile Photo"
-              fill
-              unoptimized
-              className="object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-700"
-              priority
+              className="w-full h-full object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-700"
             />
 
             {/* Status Badge overlay */}
