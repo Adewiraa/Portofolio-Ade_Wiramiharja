@@ -94,6 +94,13 @@ const ACCENTS = {
 
 type AccentKey = keyof typeof ACCENTS;
 
+const PROFILE_IMAGES: Record<AccentKey, string> = {
+  sky: "/biru.png",
+  emerald: "/hijau.png",
+  yellow: "/kuning.png",
+  rose: "/merah.png",
+};
+
 interface Project {
   title: string;
   category: string;
@@ -587,7 +594,7 @@ export default function Portfolio() {
             className={`lg:col-span-1 lg:row-span-2 bg-zinc-900 border border-zinc-850 rounded-3xl overflow-hidden relative group min-h-[350px] lg:min-h-0`}
           >
             <Image
-              src="/avatar.png"
+              src={PROFILE_IMAGES[activeAccent]}
               alt="Ade Wiramiharja Profile Photo"
               fill
               unoptimized
