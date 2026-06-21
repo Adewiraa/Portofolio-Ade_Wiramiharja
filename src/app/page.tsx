@@ -596,7 +596,7 @@ export default function Portfolio() {
             <img
               src={PROFILE_IMAGES[activeAccent]}
               alt="Ade Wiramiharja Profile Photo"
-              className="w-full h-full object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover object-top scale-[1.1] group-hover:scale-[1.15] transition-transform duration-700"
             />
 
             {/* Status Badge overlay */}
