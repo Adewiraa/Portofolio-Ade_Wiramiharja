@@ -103,6 +103,7 @@ interface Project {
   longDescription: string;
   tags: string[];
   features: { title: string; desc: string }[];
+  isPersonal?: boolean;
 }
 
 const PROJECTS: Project[] = [
@@ -121,22 +122,25 @@ const PROJECTS: Project[] = [
       { title: "Digital SOP (Protap)", desc: "Repositori Standard Operating Procedures (Protap) terpusat untuk departemen QA, QC, Produksi, Logistik, Teknik, dan Supporting." },
       { title: "Human Resources & Job Management", desc: "Manajemen penugasan kerja teknis (Job Assignment, Schedule, Realization), pelacakan lembur (Lembur Karyawan & Lembur Pengiriman), serta absensi dan pelatihan internal." },
       { title: "AI Office & WA Studio", desc: "Fitur pintar asisten AI (kalkulator AI & chat AI) serta modul integrasi notifikasi pesan via WhatsApp." }
-    ]
+    ],
+    isPersonal: false
   },
   {
-    title: "POS Apotek & Stock Management",
-    category: "Pharmacy Point of Sale",
-    year: "2025",
+    title: "Apotek ApoGo",
+    category: "Pharmacy POS & Inventory System",
+    year: "2026",
     image: "/apotek.png",
-    description: "Aplikasi POS terintegrasi berbasis web untuk apotek retail. Menyediakan pelacakan stok obat otomatis, peringatan kedaluwarsa obat, pengelolaan resep dokter, dan pencatatan riwayat transaksi harian.",
-    longDescription: "Sistem Point of Sale (POS) dan manajemen inventaris apotek ritel modern yang dirancang untuk mempercepat transaksi kasir, mengontrol perputaran stok obat, dan menyajikan laporan keuangan secara otomatis. Sistem ini juga dilengkapi penanganan obat resep dan pelacakan batch kedaluwarsa untuk menjamin keamanan produk.",
-    tags: ["React", "Node.js", "Express", "MySQL", "Tailwind CSS"],
+    description: "Aplikasi POS & manajemen apotek modern berbasis Next.js & Supabase dengan pelacakan FEFO, register narkotika/psikotropika, dan pembatasan role. (Proyek pribadi, tidak digunakan secara komersial).",
+    longDescription: "Apotek ApoGo adalah sistem Point of Sale (POS) dan manajemen inventaris apotek ritel modern yang dirancang menggunakan Next.js (App Router) dan database cloud Supabase. Sistem ini mengontrol penjualan obat (transaksi umum & resep dokter), diskon otomatis, dan pelacakan batch kedaluwarsa (FEFO). Dilengkapi modul Buku Register Narkotika/Psikotropika yang ketat untuk regulasi, penyesuaian hak akses staf secara dinamis (RBAC), serta keamanan berlapis melalui mode demo (view-only). Catatan: Proyek ini merupakan proyek pribadi/simulasi mandiri dan belum pernah benar-benar digunakan secara resmi di apotek nyata.",
+    tags: ["Next.js 15", "Supabase", "TypeScript", "PostgreSQL", "Tailwind CSS"],
     features: [
-      { title: "Smart Cashier Interface", desc: "POS kasir cepat dengan pencarian obat responsif, kalkulasi otomatis, dan integrasi cetak struk belanja." },
-      { title: "Expired & Batch Control", desc: "Peringatan otomatis untuk obat mendekati tanggal kedaluwarsa berdasarkan nomor batch produksi." },
-      { title: "Prescription Management", desc: "Modul khusus untuk mencatat, menghitung dosis racikan, dan memproses obat berdasarkan resep dokter." },
-      { title: "Financial Recap", desc: "Laporan penjualan harian, mingguan, bulanan, margin keuntungan, serta data obat terlaris (fast-moving items)." }
-    ]
+      { title: "Smart Cashier & Multi-Payment", desc: "Mendukung transaksi kasir cepat (umum/resep), diskon dinamis, cetak struk belanja thermal, dan simulasi pembayaran." },
+      { title: "Smart Inventory (FEFO)", desc: "Pelacakan stok obat otomatis menggunakan sistem FEFO (First Expired First Out) untuk meminimalkan kerugian obat kedaluwarsa." },
+      { title: "Register Narkotika & Psikotropika", desc: "Buku log pencatatan keluar-masuk obat golongan psikotropika & narkotika secara ketat dan terintegrasi resep dokter." },
+      { title: "Dynamic Access Control (RBAC)", desc: "Pembatasan menu untuk Admin, Apoteker, dan Kasir dengan izin menu yang dapat disesuaikan secara real-time oleh Admin." },
+      { title: "View-Only Demo Security", desc: "Fitur demo aman dengan proteksi write-access untuk mencegah modifikasi data secara langsung oleh akun peninjau." }
+    ],
+    isPersonal: true
   },
   {
     title: "Prediksi Harga Saham Monte Carlo",
@@ -151,7 +155,8 @@ const PROJECTS: Project[] = [
       { title: "Interactive Iteration Chart", desc: "Visualisasi dinamis dari ribuan lintasan simulasi harga saham secara interaktif menggunakan pustaka Chart.js." },
       { title: "Probability & Risk Analytics", desc: "Kalkulasi statistik untuk mengukur persentase pencapaian target harga saham serta analisis skenario risiko." },
       { title: "Historical Stock Management", desc: "Modul impor dan pengelolaan data historis harga penutupan harian (Close Price) saham sebagai dasar simulasi." }
-    ]
+    ],
+    isPersonal: true
   }
 ];
 
@@ -822,10 +827,17 @@ export default function Portfolio() {
                   </div>
 
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className={`text-xs font-semibold uppercase tracking-wider ${theme.primary}`}>
-                        {project.category}
-                      </span>
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className={`text-xs font-semibold uppercase tracking-wider ${theme.primary}`}>
+                          {project.category}
+                        </span>
+                        {project.isPersonal && (
+                          <span className="px-2 py-0.5 bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 text-[9px] rounded-full font-medium">
+                            Proyek Pribadi
+                          </span>
+                        )}
+                      </div>
                       <span className="text-[10px] text-zinc-500 font-mono">{project.year}</span>
                     </div>
                     <h3 className="text-xl font-bold text-white group-hover:text-zinc-100 transition-colors">
@@ -1080,10 +1092,18 @@ export default function Portfolio() {
 
             {/* Header */}
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className={`text-xs font-semibold uppercase tracking-wider ${theme.primary}`}>
                   {selectedProject.category}
                 </span>
+                {selectedProject.isPersonal && (
+                  <>
+                    <span className="text-zinc-500">•</span>
+                    <span className="px-2 py-0.5 bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 text-[10px] rounded-full font-medium">
+                      Proyek Pribadi (Belum digunakan secara komersial)
+                    </span>
+                  </>
+                )}
                 <span className="text-zinc-500">•</span>
                 <span className="text-xs text-zinc-500 font-mono">{selectedProject.year}</span>
               </div>
